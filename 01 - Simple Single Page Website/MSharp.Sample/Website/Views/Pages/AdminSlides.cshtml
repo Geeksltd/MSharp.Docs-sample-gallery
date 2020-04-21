@@ -1,0 +1,69 @@
+﻿@model ViewModel.SlideTbl
+<!-- «Start| SlideTbl» -->
+<form data-module="SlideTbl" method="get" action="@Url.Current()" data-redirect="ajax">
+   @Html.AntiForgeryToken()
+   @Html.StartupActionsJson()
+   <div class="buttons-row top-buttons-row">
+      <div class="buttons">
+         <a name="NewSlide" class="btn btn-primary" href='@Url.Index("AdminSlidesAddOrUpdate")' data-redirect="ajax" default-button="true"><i class="fas fa-plus"></i>
+            New Slide</a>
+      </div>
+   </div>
+   <h2>Slides</h2>
+   <div class="search">
+      <div class="form-group row">
+         <label for="FullSearch" class="control-label">
+            Find:
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="FullSearch" class="form-control" />
+         </div>
+      </div>
+   </div>
+   @if (Model.Items.Any())
+   {
+   <div class="grid-wrapper">
+      <table class="grid">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Description</th>
+               <th>Link Url</th>
+               <th>Link Text</th>
+               <th>Display Order</th>
+               <th>Image</th>
+               <th class="actions">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            @foreach (var listItem in Model.Items)
+            {
+            var item = listItem.Item;
+            <tr>
+               <td>@item.Title</td>
+               <td>@item.Description</td>
+               <td>@item.LinkUrl</td>
+               <td>@item.LinkText</td>
+               <td>@item.DisplayOrder</td>
+               <td>@if (item.Image.HasValue())
+                  {
+                  <img src='@item.Image'/>
+                  }</td>
+               <td class="actions"><a name="Edit" class="btn btn-secondary" href='@Url.Index("AdminSlidesAddOrUpdate", new { item = item.ID })' data-redirect="ajax"><i class="fas fa-edit"></i>
+                     Edit</a>
+                  <button type="submit" name="Delete" class="btn btn-secondary" formaction='@Url.ActionWithQuery("SlideTbl/Delete", item)'><i class="fas fa-times"></i>
+                     Delete</button></td>
+            </tr>
+            }
+         </tbody>
+      </table>
+   </div>
+   }
+   @if (Model.Items.None())
+   {
+   <div class="empty-list">
+      There are no slides to display.
+   </div>
+   }
+</form>
+<!-- «End| SlideTbl» -->

@@ -1,0 +1,65 @@
+﻿@model ViewModel.SlideFrm
+<!-- «Start| SlideFrm» -->
+<form data-module="SlideFrm" role="form" method="post" action="@Url.Current()" enctype="multipart/form-data" data-validation-style="tooltip" class="input-form">
+   @Html.AntiForgeryToken()
+   @Html.StartupActionsJson()
+   <h2>Slide details</h2>
+   <div class="form-body">
+      <div class="form-group row required-item">
+         <label for="Title" class="control-label">
+            Title
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="Title" class="form-control" autofocus="autofocus" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="Description" class="control-label">
+            Description
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="Description" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="LinkUrl" class="control-label">
+            Link Url
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="LinkUrl" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="LinkText" class="control-label">
+            Link Text
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="LinkText" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="DisplayOrder" class="control-label">
+            Display Order
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="DisplayOrder" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row">
+         <label for="Image" class="control-label">
+            Image
+         </label>
+         <div class="group-control">
+            @Html.FileUploadFor(x => x.Image, new { accept = ".jpg,.jpeg,.png,.bmp,.gif,.webp,.tiff,.svg" })
+         </div>
+      </div>
+   </div>
+   <div class="buttons-row">
+      <div class="buttons">
+         <button type="button" name="Cancel" class="btn btn-secondary" onclick="return page.goBack(this);" data-redirect="ajax">Cancel</button>
+         <button type="submit" name="Save" class="btn btn-primary" formaction='@Url.ActionWithQuery("SlideFrm/Save")' default-button="true"><i class="fas fa-check"></i>
+            Save</button>
+      </div>
+   </div>
+</form>
+<!-- «End| SlideFrm» -->

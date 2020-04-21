@@ -1,0 +1,23 @@
+﻿@model ViewModel.MainMenu
+@(Layout = null)
+
+<!-- «Start| MainMenu» -->
+<ul>
+   <li class="@("active".OnlyWhen(Model.ActiveItem == "Home") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Home/")))">
+      <a href="#SlideLst" class="mark">Home</a>
+   </li>
+   <li class="@("active".OnlyWhen(Model.ActiveItem == "Features") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Features/")))">
+      <a href="#FeatureLst">Features</a>
+   </li>
+   <li class="@("active".OnlyWhen(Model.ActiveItem == "About") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("About/")))">
+      <a href="#About">About</a>
+   </li>
+   <li class="@("active".OnlyWhen(Model.ActiveItem == "Clients") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Clients/")))">
+      <a href="#ClientLst">Clients</a>
+   </li>
+   <li class="@("active".OnlyWhen(Model.ActiveItem == "Contact") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Contact/")))">
+      <a href="#Contact">Contact</a>
+   </li>
+</ul>
+<!-- «End| MainMenu» -->
+

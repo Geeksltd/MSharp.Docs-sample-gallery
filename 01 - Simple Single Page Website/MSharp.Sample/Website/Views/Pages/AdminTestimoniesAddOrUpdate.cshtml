@@ -1,0 +1,57 @@
+﻿@model ViewModel.TestimonyFrm
+<!-- «Start| TestimonyFrm» -->
+<form data-module="TestimonyFrm" role="form" method="post" action="@Url.Current()" enctype="multipart/form-data" data-validation-style="tooltip" class="input-form">
+   @Html.AntiForgeryToken()
+   @Html.StartupActionsJson()
+   <h2>Testimony details</h2>
+   <div class="form-body">
+      <div class="form-group row required-item">
+         <label for="Image" class="control-label">
+            Image
+         </label>
+         <div class="group-control">
+            @Html.FileUploadFor(x => x.Image, new { autofocus = "autofocus", accept = ".jpg,.jpeg,.png,.bmp,.gif,.webp,.tiff,.svg" })
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="Name" class="control-label">
+            Name
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="Name" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="Position" class="control-label">
+            Position
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="Position" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row required-item">
+         <label for="Content" class="control-label">
+            Content
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="Content" class="form-control" />
+         </div>
+      </div>
+      <div class="form-group row">
+         <label for="DisplayOrder" class="control-label">
+            Display Order
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="DisplayOrder" class="form-control" />
+         </div>
+      </div>
+   </div>
+   <div class="buttons-row">
+      <div class="buttons">
+         <a name="Cancel" class="btn btn-secondary" href='@Url.Index("AdminTestimonies")' data-redirect="ajax">Cancel</a>
+         <button type="submit" name="Save" class="btn btn-primary" formaction='@Url.ActionWithQuery("TestimonyFrm/Save")' default-button="true"><i class="fas fa-check"></i>
+            Save</button>
+      </div>
+   </div>
+</form>
+<!-- «End| TestimonyFrm» -->

@@ -1,0 +1,37 @@
+﻿@model ViewModel.SlideLst
+
+<!-- «Start| SlideLst» -->
+<div data-module="SlideLst">
+   @Html.StartupActionsJson()
+   @if (Model.Items.Any())
+   {
+   <div class='list-items'>
+      @foreach (var listItem in Model.Items)
+      {
+      var item = listItem.Item;
+      <div class='item'>
+         <img src='@item.Image' />
+         <div class='info'>
+            <div>
+               <span>
+                  @item.Title
+               </span>
+               <span>
+                  @item.Description
+               </span>
+               <a href='@item.LinkUrl'>@item.LinkText</a>
+            </div>
+         </div>
+      </div>
+      }
+   </div>
+   }
+   @if (Model.Items.None())
+   {
+   <div class="empty-list">
+      There are no slides to display.
+   </div>
+   }
+</div>
+<!-- «End| SlideLst» -->
+

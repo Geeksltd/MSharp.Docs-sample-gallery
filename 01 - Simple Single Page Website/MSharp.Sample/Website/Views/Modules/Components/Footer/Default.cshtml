@@ -1,0 +1,16 @@
+﻿@model ViewModel.Footer
+@(Layout = null)
+
+<!-- «Start| Footer» -->
+<div data-module="Footer">
+   @Html.StartupActionsJson()
+   <small>
+      Designed & Developed by
+      <a target='_blank' href='https://geeks.ltd.uk'>Geeks Ltd.</a>
+      &copy; @(LocalTime.Now.Year) All rights reserved.
+   </small>
+   <span title='Back to top' class='icon-chevron-up'>
+   </span>
+</div>
+<!-- «End| Footer» -->
+

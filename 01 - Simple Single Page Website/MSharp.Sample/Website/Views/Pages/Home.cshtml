@@ -1,0 +1,11 @@
+﻿@{Layout = "~/Views/Layouts/Default.cshtml";}
+@(await Html.PartialAsync("SlideLst", ViewBag.SlideLst as ViewModel.SlideLst))
+@(await Html.PartialAsync("FeatureLst", ViewBag.FeatureLst as ViewModel.FeatureLst))
+@(await Component.InvokeAsync
+<About>
+   (ViewBag.About as ViewModel.About))
+   @(await Html.PartialAsync("ClientLst", ViewBag.ClientLst as ViewModel.ClientLst))
+   @(await Html.PartialAsync("TestimonyLst", ViewBag.TestimonyLst as ViewModel.TestimonyLst))
+   @(await Component.InvokeAsync
+   <Contact>
+(ViewBag.Contact as ViewModel.Contact))

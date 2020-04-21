@@ -1,0 +1,34 @@
+﻿@using Olive.Security
+
+@model ViewModel.AdminMenu
+@(Layout = null)
+
+<!-- «Start| AdminMenu» -->
+<div data-module="AdminMenu" class="sidebar-menu">
+   @Html.StartupActionsJson()
+   <ul class="nav flex-column">
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "GeneralSettings") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("GeneralSettings/")))">
+         <a href="@Url.Index("AdminSettingsGeneral")" data-redirect="ajax">General settings</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "Administrators") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Administrators/")))">
+         <a href="@Url.Index("AdminSettingsAdministrators")" data-redirect="ajax">Administrators</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "ContentBlocks") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("ContentBlocks/")))">
+         <a href="@Url.Index("AdminSettingsContentBlocks")" data-redirect="ajax">Content blocks</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "Slides") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Slides/")))">
+         <a href="@Url.Index("AdminSlides")" data-redirect="ajax">Slides</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "Features") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Features/")))">
+         <a href="@Url.Index("AdminFeatures")" data-redirect="ajax">Features</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "Clients") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Clients/")))">
+         <a href="@Url.Index("AdminClients")" data-redirect="ajax">Clients</a>
+      </li>
+      <li class="@("active".OnlyWhen(Model.ActiveItem == "Testimonies") + " active-parent".OnlyWhen(Model.ActiveItem.OrEmpty().StartsWith("Testimonies/")))">
+         <a href="@Url.Index("AdminTestimonies")" data-redirect="ajax">Testimonies</a>
+      </li>
+   </ul>
+</div>
+<!-- «End| AdminMenu» -->
+

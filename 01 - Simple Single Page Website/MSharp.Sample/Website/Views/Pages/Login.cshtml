@@ -1,0 +1,9 @@
+﻿@{Layout = "~/Views/Layouts/Login.cshtml";}
+<div class="login-content">
+   <div class="card login">
+      <div class="card-body">
+         @(await Html.PartialAsync("LoginForm", ViewBag.LoginForm as ViewModel.LoginForm))
+         @(await Html.PartialAsync("SocialMediaLogin", ViewBag.SocialMediaLogin as ViewModel.SocialMediaLogin))
+      </div>
+   </div>
+</div>

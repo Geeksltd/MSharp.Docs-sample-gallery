@@ -1,0 +1,58 @@
+﻿@model ViewModel.FeatureTbl
+<!-- «Start| FeatureTbl» -->
+<form data-module="FeatureTbl" method="get" action="@Url.Current()" data-redirect="ajax">
+   @Html.AntiForgeryToken()
+   @Html.StartupActionsJson()
+   <div class="buttons-row top-buttons-row">
+      <div class="buttons">
+         <a name="NewFeature" class="btn btn-primary" href='@Url.Index("AdminFeaturesAddOrUpdate")' data-redirect="ajax" default-button="true"><i class="fas fa-plus"></i>
+            New Feature</a>
+      </div>
+   </div>
+   <h2>Features</h2>
+   <div class="search">
+      <div class="form-group row">
+         <label for="FullSearch" class="control-label">
+            Find:
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="FullSearch" class="form-control" />
+         </div>
+      </div>
+   </div>
+   @if (Model.Items.Any())
+   {
+   <div class="grid-wrapper">
+      <table class="grid">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Description</th>
+               <th class="actions">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            @foreach (var listItem in Model.Items)
+            {
+            var item = listItem.Item;
+            <tr>
+               <td>@item.Title</td>
+               <td>@item.Description</td>
+               <td class="actions"><a name="Edit" class="btn btn-secondary" href='@Url.Index("AdminFeaturesAddOrUpdate", new { item = item.ID })' data-redirect="ajax"><i class="fas fa-edit"></i>
+                     Edit</a>
+                  <button type="submit" name="Delete" class="btn btn-secondary" formaction='@Url.ActionWithQuery("FeatureTbl/Delete", item)'><i class="fas fa-times"></i>
+                     Delete</button></td>
+            </tr>
+            }
+         </tbody>
+      </table>
+   </div>
+   }
+   @if (Model.Items.None())
+   {
+   <div class="empty-list">
+      There are no features to display.
+   </div>
+   }
+</form>
+<!-- «End| FeatureTbl» -->

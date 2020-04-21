@@ -1,0 +1,61 @@
+﻿@model ViewModel.ClientTbl
+<!-- «Start| ClientTbl» -->
+<form data-module="ClientTbl" method="get" action="@Url.Current()" data-redirect="ajax">
+   @Html.AntiForgeryToken()
+   @Html.StartupActionsJson()
+   <div class="buttons-row top-buttons-row">
+      <div class="buttons">
+         <a name="NewClient" class="btn btn-primary" href='@Url.Index("AdminClientsAddOrUpdate")' data-redirect="ajax" default-button="true"><i class="fas fa-plus"></i>
+            New Client</a>
+      </div>
+   </div>
+   <h2>Clients</h2>
+   <div class="search">
+      <div class="form-group row">
+         <label for="FullSearch" class="control-label">
+            Find:
+         </label>
+         <div class="group-control">
+            <input type="text" asp-for="FullSearch" class="form-control" />
+         </div>
+      </div>
+   </div>
+   @if (Model.Items.Any())
+   {
+   <div class="grid-wrapper">
+      <table class="grid">
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Image</th>
+               <th class="actions">Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            @foreach (var listItem in Model.Items)
+            {
+            var item = listItem.Item;
+            <tr>
+               <td>@item.Name</td>
+               <td>@if (item.Image.HasValue())
+                  {
+                  <img src='@item.Image'/>
+                  }</td>
+               <td class="actions"><a name="Edit" class="btn btn-secondary" href='@Url.Index("AdminClientsAddOrUpdate", new { item = item.ID })' data-redirect="ajax"><i class="fas fa-edit"></i>
+                     Edit</a>
+                  <button type="submit" name="Delete" class="btn btn-secondary" formaction='@Url.ActionWithQuery("ClientTbl/Delete", item)'><i class="fas fa-times"></i>
+                     Delete</button></td>
+            </tr>
+            }
+         </tbody>
+      </table>
+   </div>
+   }
+   @if (Model.Items.None())
+   {
+   <div class="empty-list">
+      There are no clients to display.
+   </div>
+   }
+</form>
+<!-- «End| ClientTbl» -->
