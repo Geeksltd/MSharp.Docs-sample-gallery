@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "gulp": "^4.0.2",
     "gulp-dotnet-watch": "^0.3.1",
     "gulp-sass": "^4.0.2"
